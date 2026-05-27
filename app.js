@@ -8,7 +8,7 @@ const shopRoutes = require("./routes/shop");
 
 const app = express();
 app.set("view engine", "pug");
-app.set("views","viesws");
+app.set("views", "views");
 
 
 // Modules ...

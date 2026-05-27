@@ -3,7 +3,7 @@ html(lang="en")
   head
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title My-Shop
+    title #{title}
 
     style.
       * {
@@ -14,33 +14,28 @@ html(lang="en")
       }
 
       body {
-        background-color: #f5f7fa;
+        background-color: #f3f4f6;
         color: #333;
       }
 
       header {
-        background-color: #1f2937;
+        background-color: #111827;
         padding: 1rem 2rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       }
 
-      nav {
+      nav ul {
         display: flex;
-        align-items: center;
         gap: 1rem;
-      }
-
-      nav li {
         list-style: none;
       }
 
       nav a {
         text-decoration: none;
         color: white;
-        font-size: 16px;
         padding: 10px 16px;
-        border-radius: 6px;
-        transition: background-color 0.3s;
+        border-radius: 8px;
+        transition: 0.3s;
       }
 
       nav a:hover {
@@ -48,34 +43,82 @@ html(lang="en")
       }
 
       main {
-        max-width: 900px;
-        margin: 60px auto;
-        background-color: white;
-        padding: 40px;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-        text-align: center;
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 20px;
       }
 
-      h1 {
-        font-size: 40px;
-        margin-bottom: 16px;
+      .page-title {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .page-title h1 {
+        font-size: 42px;
+        margin-bottom: 10px;
         color: #111827;
       }
 
-      p {
-        font-size: 18px;
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 24px;
+      }
+
+      .product {
+        background-color: white;
+        border-radius: 14px;
+        padding: 24px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        transition: transform 0.3s;
+      }
+
+      .product:hover {
+        transform: translateY(-5px);
+      }
+
+      .product h2 {
+        margin-bottom: 12px;
+        color: #111827;
+      }
+
+      .product p {
         color: #6b7280;
+        margin-bottom: 20px;
+        line-height: 1.5;
+      }
+
+      .product button {
+        background-color: #2563eb;
+        color: white;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .product button:hover {
+        background-color: #1d4ed8;
       }
 
   body
     header
       nav
-        li
-          a(href="/") Shop
-        li
-          a(href="/admin/add-product") Add Product
+        ul
+          li
+            a(href="/") Shop
+          li
+            a(href="/admin/add-product") Add Product
 
     main
-      h1 My Products
-      p List of available products will appear here.
+      .page-title
+        h1 My Products
+        p Explore our latest products
+
+      .products-grid
+        each product in prods
+          .product
+            h2 #{product.title}
+            p #{product.description}
+            button View Product
