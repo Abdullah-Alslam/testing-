@@ -1,16 +1,29 @@
 const Product = require("../models/products");
 
-exports.getAddProduct = (req, res) => {
-  res.render("add-product", { title: "Add Product" });
+exports.getProducts = (req, res) => {
+  Product.fetchAll((products) => {
+    res.render("shop/products-list", { prods: products, title: "My shop" });
+  });
 };
 
-exports.postAddProduct = (req, res) => {
-  const product = new Product(req.body.title);
-  product.save();
-  res.redirect("/");
+exports.getIndex = (req, res) => {
+  Product.fetchAll((products) => {
+    res.render("shop/products-list", { prods: products, title: "My shop" });
+  });
 };
-exports.getProducts = (req, res) => {
-    Product.fetchAll((products) => {
-        res.render("shop", { prods: products, title: "My shop" });
-    });
+
+exports.getCart = (req, res) => {
+  res.render("shop/cart", {
+    title: "My cart",
+  });
+};
+exports.getOrders = (req, res) => {
+  res.render("shop/orders", {
+    title: "My orders",
+  });
+};
+
+
+exports.getCheckout = (req, res) => {
+  res.render("shop/checkout", { title: "Checkout" });
 };
