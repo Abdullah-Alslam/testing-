@@ -5,11 +5,12 @@ exports.getAddProduct = (req, res) => {
 };
 
 exports.postAddProduct = (req, res) => {
-  const tiltile = req.body.title;
+  const id = Math.random().toString();
+  const title = req.body.title;
   const imageURL = req.body.imageURL;
   const description = req.body.description;
   const price = req.body.price;
-  const product = new Product(tiltile, imageURL, description, price);
+  const product = new Product(id, title, imageURL, description, price);
   product.save();
   res.redirect("/");
 };

@@ -169,11 +169,14 @@
             <%= prod.description %>
           </p>
 
-    <form action="/add-to-cart" method="post">
+<div>  
+  <a href="/products/<%= prod.id %>">View Details</a>
+  
+  <form action="/add-to-cart" method="post">
             <button type="submit" class="product-btn">
           Add To Cart
           </button>
-    </form>
+    </form></div>
         </div>
       </div>
     <% }) %>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= product.title %></title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background: #f4f6f9;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 60px auto;
+        padding: 20px;
+      }
+
+      .product {
+        display: flex;
+        gap: 40px;
+        background: white;
+        border-radius: 16px;
+        padding: 30px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      }
+
+      .product-image {
+        flex: 1;
+      }
+
+      .product-image img {
+        width: 100%;
+        border-radius: 12px;
+      }
+
+      .product-info {
+        flex: 1;
+      }
+
+      .product-title {
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+
+      .product-price {
+        font-size: 28px;
+        color: #2563eb;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .product-description {
+        color: #666;
+        line-height: 1.8;
+        margin-bottom: 30px;
+      }
+
+      .btn {
+        background: #2563eb;
+        color: white;
+        border: none;
+        padding: 14px 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .btn:hover {
+        background: #1d4ed8;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="product">
+        <div class="product-image">
+          <img src="<%= product.imageURL %>" alt="<%= product.title %>" />
+        </div>
+
+        <div class="product-info">
+          <h1 class="product-title"><%= product.title %></h1>
+
+          <p class="product-price">$<%= product.price %></p>
+
+          <p class="product-description"><%= product.description %></p>
+
+          <form action="/cart" method="post">
+            <button type="submit" class="btn">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
